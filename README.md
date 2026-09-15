@@ -36,6 +36,7 @@
 4. 等待本地解析；
 5. 在结果区域查看提取素材或最终合成壁纸；
 6. 根据需要单独下载或批量打包。
+<img width="2560" height="2297" alt="image" src="https://github.com/user-attachments/assets/638421e6-5a8c-469e-bc08-9d19bc1ad0b2" />
 
 ## 技术实现
 
