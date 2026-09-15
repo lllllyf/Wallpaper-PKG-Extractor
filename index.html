@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wallpaper Engine PKG 壁纸提取与场景还原工具</title>
+<style>
+html,body{margin:0;min-height:100%;background:#0a0d12;color:#eef3fb;font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}body{display:grid;place-items:center}.loading{text-align:center;padding:40px}.loading b{display:block;font-size:18px;margin-bottom:8px}.loading span{font-size:13px;color:#8e9bad}
+</style>
+</head>
+<body>
+<div class="loading"><b>正在加载 PKG Wallpaper Extractor…</b><span>所有解析均在浏览器本地完成</span></div>
+<script>window.__PX=[];</script>
+<script src="payload/chunk0.js"></script>
+<script src="payload/chunk1.js"></script>
+<script src="payload/chunk2.js"></script>
+<script src="payload/chunk3.js"></script>
+<script src="payload/chunk4.js"></script>
+<script>
+(async()=>{
+  try{
+    const b64=window.__PX.join('');
+    const bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+    if(!('DecompressionStream' in window)) throw new Error('当前浏览器不支持 DecompressionStream，请使用最新版 Chrome 或 Edge。');
+    const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    const html=await new Response(stream).text();
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(err){
+    document.body.innerHTML='<div class="loading"><b>应用加载失败</b><span>'+String(err)+'</span></div>';
+    console.error(err);
+  }
+})();
+</script>
+</body>
+</html>
